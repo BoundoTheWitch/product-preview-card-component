@@ -1,0 +1,152 @@
+:root {
+  --clr-green-500: hsl(158, 36%, 37%);
+  --clr-green-700: hsl(158, 42%, 18%);
+  --clr-black: hsl(212, 21%, 14%);
+  --clr-grey: hsl(228, 12%, 48%);
+  --clr-cream: hsl(30, 38%, 92%);
+  --clr-white: hsl(0, 0%, 100%);
+
+  --fnt-primary: Montserrat, sans-serif;
+  --fnt-header: Fraunces, serif;
+}
+
+/* Resets */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Rest of the CSS */
+
+body {
+  display: grid;
+  place-items: center;
+  margin: 1rem;
+  font-family: var(--fnt-primary);
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--clr-grey);
+  line-height: 1.7;
+  background-color: var(--clr-cream);
+}
+
+h1 {
+  font-family: var(--fnt-header);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+}
+
+img {
+  max-inline-size: 100%;
+}
+
+/* Product card */
+
+.product {
+  display: grid;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: white;
+  max-width: 545px;
+
+  .product__details {
+    display: grid;
+    gap: 1rem;
+    padding: 2rem;
+
+    .product__category {
+      letter-spacing: 1ch;
+      text-transform: uppercase;
+      font-size: 0.615rem;
+    }
+
+    .product__name {
+      font-family: var(--fnt-header);
+      font-weight: 700;
+      color: var(--clr-black);
+      font-size: 1.875rem;
+    }
+    
+    .product__price-group {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+
+      .product__price {
+        color: var(--clr-green-500);
+        font-family: var(--fnt-header);
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .product__price-msrp {
+        font-size: 0.715rem;
+      }
+
+    }
+
+    .product__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.825rem;
+      font-weight: 700;
+      color: var(--clr-white);
+      background-color: var(--clr-green-500);
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      
+      &:hover:is(:hover, :focus) {
+        background-color: var(--clr-green-700);
+      }
+      
+      &[data-icon="shopping-cart"]::before {
+        content: '';
+        width: 15px;
+        height: 16px;
+        background-image: url('images/icon-cart.svg');
+      }
+    }
+  }
+
+  @media (min-width: 700px) {
+    grid-template-columns: 1fr 1fr;
+    .product__details {
+      padding: 2rem;
+    }
+  }
+}
+
+/*
+  This was something I found in a Kevin Powell video on this
+  challenge and I wanted to implement it as I find accessiblily
+  very important. It's also a learning experience.
+*/
+.visually-hidden:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
